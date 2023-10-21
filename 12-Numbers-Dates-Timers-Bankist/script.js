@@ -359,3 +359,22 @@ btnSort.addEventListener("click", function (e) {
 //     if (i % 3 === 0) row.style.backgroundColor = 'blue';
 //   });
 // });
+
+// Numeric Separators
+
+// 287,460,000,000
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const price = 345_99;
+console.log(price);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+// Can't put between dot or at a beginning and not to in the row
+const PI = 3.1415;
+console.log(PI);
+
+// Can't put in conversion
+console.log(Number("230_000"));
