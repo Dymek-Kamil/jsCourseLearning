@@ -359,5 +359,3 @@ btnSort.addEventListener("click", function (e) {
 //     if (i % 3 === 0) row.style.backgroundColor = 'blue';
 //   });
 // });
-
-// TEST
