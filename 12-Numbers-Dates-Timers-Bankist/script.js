@@ -360,21 +360,54 @@ btnSort.addEventListener("click", function (e) {
 //   });
 // });
 
-// Numeric Separators
+// // Numeric Separators
 
-// 287,460,000,000
-const diameter = 287_460_000_000;
-console.log(diameter);
+// // 287,460,000,000
+// const diameter = 287_460_000_000;
+// console.log(diameter);
 
-const price = 345_99;
-console.log(price);
+// const price = 345_99;
+// console.log(price);
 
-const transferFee1 = 15_00;
-const transferFee2 = 1_500;
+// const transferFee1 = 15_00;
+// const transferFee2 = 1_500;
 
-// Can't put between dot or at a beginning and not to in the row
-const PI = 3.1415;
-console.log(PI);
+// // Can't put between dot or at a beginning and not to in the row
+// const PI = 3.1415;
+// console.log(PI);
 
-// Can't put in conversion
-console.log(Number("230_000"));
+// // Can't put in conversion
+// console.log(Number("230_000"));
+
+// Working with BigInt
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+
+console.log(472189472189472148971249218471492187n);
+console.log(BigInt(472189472));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(3213912842141242151252155n * 1000000n);
+// console.log(Math.sqrt(16n));
+
+const huge = 20312832194128521n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == 20);
+
+console.log(huge + " is REALLY big!!!");
+
+// Divisions
+console.log(10n / 3n);
+console.log(10 / 3);
