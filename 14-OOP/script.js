@@ -76,30 +76,62 @@
 // console.dir(h1);
 // console.dir(x => x + 1);
 
-// Coding challenge 1
+// class expression
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
+// const PersonCl = {}
+
+// class declaration
+
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
+
+console.log(jessica.__proto__ === PersonCl.prototype);
+
+PersonCl.prototype.greet = function () {
+  console.log(`Hey ${this.firstName}`);
 };
+jessica.greet();
 
-Car.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`${this.make} is going at ${this.speed}`);
-};
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizens
+// 3. Classes are executed in strict mode
 
-Car.prototype.brake = function () {
-  this.speed -= 5;
-  console.log(`${this.make} is going at ${this.speed}`);
-};
+// // Coding challenge 1
 
-const bmw = new Car('BMW', 120);
-console.log(bmw);
-bmw.accelerate();
-bmw.brake();
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
 
-const mercedes = new Car('Mercedes', 95);
-console.log(mercedes);
-mercedes.accelerate();
-mercedes.accelerate();
-mercedes.accelerate();
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`${this.make} is going at ${this.speed}`);
+// };
+
+// Car.prototype.brake = function () {
+//   this.speed -= 5;
+//   console.log(`${this.make} is going at ${this.speed}`);
+// };
+
+// const bmw = new Car('BMW', 120);
+// console.log(bmw);
+// bmw.accelerate();
+// bmw.brake();
+
+// const mercedes = new Car('Mercedes', 95);
+// console.log(mercedes);
+// mercedes.accelerate();
+// mercedes.accelerate();
+// mercedes.accelerate();
