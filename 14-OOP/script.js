@@ -182,38 +182,38 @@
 // sarah.init('Sarah', 1979);
 // sarah.calcAge();
 
-const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
+// const Person = function (firstName, birthYear) {
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+// };
 
-Person.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
-};
+// Person.prototype.calcAge = function () {
+//   console.log(2037 - this.birthYear);
+// };
 
-const Student = function (firstName, birthYear, course) {
-  Person.call(this, firstName, birthYear);
-  this.course = course;
-};
+// const Student = function (firstName, birthYear, course) {
+//   Person.call(this, firstName, birthYear);
+//   this.course = course;
+// };
 
-Student.prototype = Object.create(Person.prototype);
+// Student.prototype = Object.create(Person.prototype);
 
-Student.prototype.introduce = function () {
-  console.log(`My name is ${this.firstName} and I study ${this.course}`);
-};
-const mike = new Student('Mike', 2020, 'Computer Science');
-mike.introduce();
-mike.calcAge();
+// Student.prototype.introduce = function () {
+//   console.log(`My name is ${this.firstName} and I study ${this.course}`);
+// };
+// const mike = new Student('Mike', 2020, 'Computer Science');
+// mike.introduce();
+// mike.calcAge();
 
-console.log(mike.__proto__);
-console.log(mike.__proto__.__proto__);
+// console.log(mike.__proto__);
+// console.log(mike.__proto__.__proto__);
 
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
-console.log(mike instanceof Object);
+// console.log(mike instanceof Student);
+// console.log(mike instanceof Person);
+// console.log(mike instanceof Object);
 
-Student.prototype.constructor = Student;
-console.dir(Student.prototype.constructor);
+// Student.prototype.constructor = Student;
+// console.dir(Student.prototype.constructor);
 
 // // Coding challenge 1
 
@@ -275,3 +275,44 @@ console.dir(Student.prototype.constructor);
 // console.log(ford.speedUS);
 // ford.speedUS = 50;
 // console.log(ford);
+
+// Coding Challenge #3
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`${this.make} is going at ${this.speed}`);
+};
+
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(`${this.make} is going at ${this.speed}`);
+};
+
+const EV = function (make, speed, battery) {
+  Car.call(this, make, speed);
+  this.battery = battery;
+};
+
+EV.prototype = Object.create(Car.prototype);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  return (this.battery = chargeTo);
+};
+
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.battery -= 1;
+  console.log(
+    `${this.make} is going at ${this.speed} km/h, with a charge of ${this.battery}%`
+  );
+};
+
+const tesla = new EV('Tesla', 140, 23);
+console.log(tesla.accelerate());
+tesla.chargeBattery(90);
+console.log(tesla);
