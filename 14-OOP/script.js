@@ -1,31 +1,38 @@
 'use strict';
 
-// const Person = function (firstName, birthYear) {
-//   // Instance properties
-//   this.firstName = firstName;
-//   this.birthYear = birthYear;
+const Person = function (firstName, birthYear) {
+  // Instance properties
+  this.firstName = firstName;
+  this.birthYear = birthYear;
 
-//   // Never do this
-//   //   this.calcAge = function () {
-//   //     console.log(2037 - this.birthYear);
-//   //   };
-// };
+  // Never do this
+  //   this.calcAge = function () {
+  //     console.log(2037 - this.birthYear);
+  //   };
+};
 
-// const jonas = new Person('Jonas', 1991);
-// console.log(jonas);
+const jonas = new Person('Jonas', 1991);
+console.log(jonas);
 
-// // 1. New {} is created
-// // 2. function is called, this = {}
-// // 3. {} linked to prototype
-// // 4. function automatically return {}
+// 1. New {} is created
+// 2. function is called, this = {}
+// 3. {} linked to prototype
+// 4. function automatically return {}
 
-// const matilda = new Person('Matilda', 2017);
-// const jack = new Person('Jack', 1975);
-// console.log(matilda, jack);
+const matilda = new Person('Matilda', 2017);
+const jack = new Person('Jack', 1975);
+console.log(matilda, jack);
 
-// const jay = 'Jay';
+const jay = 'Jay';
 
-// console.log(jonas instanceof Person);
+console.log(jonas instanceof Person);
+
+Person.hey = function () {
+  console.log('Hey there 👋🏿');
+};
+
+Person.hey();
+
 // console.log(jay instanceof Person);
 
 // // Prototypes
@@ -81,6 +88,7 @@
 // const PersonCl = {}
 
 // class declaration
+// Instance methods
 
 class PersonCl {
   constructor(fullName, birthYear) {
@@ -106,6 +114,12 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static method
+  static hey() {
+    console.log(`Hey there`);
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -126,22 +140,24 @@ jessica.greet();
 
 const walter = new PersonCl('Walter White', 1965);
 
-const account = {
-  owner: 'jonas',
-  movements: [200, 520, 233, 420],
+PersonCl.hey();
 
-  get latest() {
-    return this.movements.slice(-1).pop();
-  },
-  set latest(mov) {
-    this.movements.push(mov);
-  },
-};
+// const account = {
+//   owner: 'jonas',
+//   movements: [200, 520, 233, 420],
 
-console.log(account.latest);
+//   get latest() {
+//     return this.movements.slice(-1).pop();
+//   },
+//   set latest(mov) {
+//     this.movements.push(mov);
+//   },
+// };
 
-account.latest = 50;
-console.log(account.movements);
+// console.log(account.latest);
+
+// account.latest = 50;
+// console.log(account.movements);
 
 // // Coding challenge 1
 
