@@ -333,21 +333,27 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
     if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
+      return this;
     }
   }
 
   // 4. Private methods
   #approveLoan(val) {
     return true;
+  }
+  static helper() {
+    console.log(`Helper`);
   }
 }
 
@@ -361,8 +367,14 @@ acc1.withdraw(140);
 acc1.requestLoan(1000);
 // acc1.#approveLoan(1000);
 console.log(acc1.getMovements());
+Account.helper();
 
 // console.log(acc1.#movements);
+
+// Chaining
+
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
 
 // // Coding challenge 1
 
