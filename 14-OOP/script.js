@@ -305,76 +305,76 @@
 // 3. Public methods
 // 4. Private methods
 
-class Account {
-  // 1. Public fields (instances not prototype)
-  locale = navigator.language;
+// class Account {
+//   // 1. Public fields (instances not prototype)
+//   locale = navigator.language;
 
-  // 2. Private fields (instances not prototype)
-  #movements = [];
-  #pin;
+//   // 2. Private fields (instances not prototype)
+//   #movements = [];
+//   #pin;
 
-  constructor(owner, currency, pin) {
-    this.owner = owner;
-    this.currency = currency;
-    this.#pin = pin;
-    // Protected property
-    // this._movements = [];
-    // this.locale = navigator.language;
+//   constructor(owner, currency, pin) {
+//     this.owner = owner;
+//     this.currency = currency;
+//     this.#pin = pin;
+//     // Protected property
+//     // this._movements = [];
+//     // this.locale = navigator.language;
 
-    console.log(`Thanks for opening an account, ${owner}`);
-  }
+//     console.log(`Thanks for opening an account, ${owner}`);
+//   }
 
-  // 3. Public methods
+//   // 3. Public methods
 
-  // Public interface
-  getMovements() {
-    return this.#movements;
-  }
+//   // Public interface
+//   getMovements() {
+//     return this.#movements;
+//   }
 
-  deposit(val) {
-    this.#movements.push(val);
-    return this;
-  }
-  withdraw(val) {
-    this.deposit(-val);
-    return this;
-  }
+//   deposit(val) {
+//     this.#movements.push(val);
+//     return this;
+//   }
+//   withdraw(val) {
+//     this.deposit(-val);
+//     return this;
+//   }
 
-  requestLoan(val) {
-    if (this.#approveLoan(val)) {
-      this.deposit(val);
-      console.log(`Loan approved`);
-      return this;
-    }
-  }
+//   requestLoan(val) {
+//     if (this.#approveLoan(val)) {
+//       this.deposit(val);
+//       console.log(`Loan approved`);
+//       return this;
+//     }
+//   }
 
-  // 4. Private methods
-  #approveLoan(val) {
-    return true;
-  }
-  static helper() {
-    console.log(`Helper`);
-  }
-}
+//   // 4. Private methods
+//   #approveLoan(val) {
+//     return true;
+//   }
+//   static helper() {
+//     console.log(`Helper`);
+//   }
+// }
 
-const acc1 = new Account('Jonas', 'EUR', 1111);
-console.log(acc1);
+// const acc1 = new Account('Jonas', 'EUR', 1111);
+// console.log(acc1);
 
-// acc1.movements.push(250);
-// acc1.movements.push(-140);
-acc1.deposit(250);
-acc1.withdraw(140);
-acc1.requestLoan(1000);
-// acc1.#approveLoan(1000);
-console.log(acc1.getMovements());
-Account.helper();
+// // acc1.movements.push(250);
+// // acc1.movements.push(-140);
+// acc1.deposit(250);
+// acc1.withdraw(140);
+// acc1.requestLoan(1000);
+// // acc1.#approveLoan(1000);
+// console.log(acc1.getMovements());
+// Account.helper();
 
-// console.log(acc1.#movements);
+// // console.log(acc1.#movements);
 
-// Chaining
+// // Chaining
 
-acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
-console.log(acc1.getMovements());
+// acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+// console.log(acc1.getMovements());
 
 // // Coding challenge 1
 
@@ -477,3 +477,57 @@ console.log(acc1.getMovements());
 // console.log(tesla.accelerate());
 // tesla.chargeBattery(90);
 // console.log(tesla);
+
+// Coding challenge 4
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelarate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed}`);
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed}`);
+    return this;
+  }
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+  set speedUS(speed) {
+    return (this.speed = speed * 1.6);
+  }
+}
+class EVCL extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+  accelarate() {
+    this.speed += 20;
+    this.#charge -= 1;
+    console.log(
+      `${this.make} is going at ${this.speed} with a charge of ${this.#charge}%`
+    );
+    return this;
+  }
+  chargeBattery(chargeTo) {
+    return (this.#charge = chargeTo), this;
+  }
+}
+const car1 = new EVCL('Rivian', 120, 23);
+
+console.log(car1);
+car1
+  .accelarate()
+  .brake()
+  .accelarate()
+  .accelarate()
+  .brake()
+  .chargeBattery(50)
+  .accelarate();
