@@ -151,16 +151,16 @@ btn.addEventListener('click', function () {
 });
 // getCountryData('slovakia');
 
-console.log(`Test start`);
-setTimeout(() => console.log(`0 sec timer`), 0);
-Promise.resolve(`Resolved promise 1`).then(response => console.log(response));
+// console.log(`Test start`);
+// setTimeout(() => console.log(`0 sec timer`), 0);
+// Promise.resolve(`Resolved promise 1`).then(response => console.log(response));
 
-Promise.resolve(`Resolved promise 2`).then(res => {
-  for (let i = 0; i < 1000000; i++) {}
-  console.log(res);
-});
+// Promise.resolve(`Resolved promise 2`).then(res => {
+//   for (let i = 0; i < 1000000; i++) {}
+//   console.log(res);
+// });
 
-console.log(`Test end`);
+// console.log(`Test end`);
 
 // // Coding challange 1
 
