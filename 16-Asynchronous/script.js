@@ -217,15 +217,15 @@ const getCountryData = function (country) {
 
 // console.log(`Getting position`);
 
-// const getPosition = function () {
-//   return new Promise(function (resolve, reject) {
-//     // navigator.geolocation.getCurrentPosition(
-//     //   position => resolve(position),
-//     //   err => reject(err)
-//     // );
-//     navigator.geolocation.getCurrentPosition(resolve, reject);
-//   });
-// };
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
 
 // getPosition().then(pos => console.log(pos));
 
@@ -254,6 +254,24 @@ const getCountryData = function (country) {
 // };
 
 // btn.addEventListener('click', whereAmI);
+
+// const whereAmI = async function () {
+//   const pos = await getPosition();
+//   const { latitude: lat, longitude: lng } = pos.coords;
+//   // Reverse geocoding
+//   const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+//   const dataGeo = await resGeo.json();
+//   console.log(dataGeo);
+//   // Country data
+//   const res = await fetch(
+//     `https://restcountries.com/v2/name/${dataGeo.country}`
+//   );
+//   const data = await res.json();
+//   console.log(data);
+//   renderCountry(data[0]);
+// };
+// whereAmI();
+// console.log(`FIRST`);
 
 // // Coding challange 1
 
