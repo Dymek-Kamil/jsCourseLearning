@@ -279,3 +279,43 @@ const getCountryData = function (country) {
 // whereAmI(52.508, 13.381);
 // whereAmI(19.037, 72.873);
 // whereAmI(-33.933, 18.474);
+
+// Coding challenge 2
+// let image;
+// const imgContainer = document.querySelector('.images');
+
+// const createImage = function (imgPath) {
+//   return new Promise(function (resolve, reject) {
+//     const image = document.createElement('img');
+//     image.src = imgPath;
+//     image.addEventListener('load', function () {
+//       imgContainer.append(image);
+//       resolve(image);
+//     });
+//     image.addEventListener('error', function () {
+//       reject(new Error(`Failed to load image`));
+//     });
+//   });
+// };
+
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+
+// createImage('img/img-1.jpg')
+//   .then(res => {
+//     image = res;
+//     return wait(2);
+//   })
+//   .then(() => {
+//     image.style.display = 'none';
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(res => {
+//     image = res;
+//     return wait(2);
+//   })
+//   .then(() => (image.style.display = 'none'))
+//   .catch(err => console.error(err));
