@@ -43,6 +43,5 @@ const getLastPost = async function () {
 const lastPost = getLastPost();
 console.log(lastPost);
 
-// Not very clean
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
