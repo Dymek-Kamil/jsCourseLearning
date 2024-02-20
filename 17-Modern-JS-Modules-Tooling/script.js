@@ -33,12 +33,12 @@ console.log(cart);
 // console.log(data);
 // console.log(`Something`);
 
-const getLastPost = async function () {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
-  const data = await res.json();
+// const getLastPost = async function () {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+//   const data = await res.json();
 
-  return { title: data.at(-1).title, text: data.at(-1).body };
-};
+//   return { title: data.at(-1).title, text: data.at(-1).body };
+// };
 
 // const lastPost = getLastPost();
 // console.log(lastPost);
@@ -75,7 +75,8 @@ const getLastPost = async function () {
 // ShoppingCart2.addToCart('pizza', 2);
 // console.log(ShoppingCart2);
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -90,3 +91,26 @@ const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false;
 
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+class Person {
+  greeting = 'hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}, ${this.name}`);
+  }
+}
+const jonas = new Person('Joans');
+
+console.log(`Jonas` ?? null);
+
+console.log(cart.filter(el => el.quantity >= 2));
+Promise.resolve(`Test`).then(x => console.log(x));
+
+// import 'core-js/stable';
+import 'core-js/stable/array/find.js';
+
+import 'regenerator-runtime/runtime.js';
