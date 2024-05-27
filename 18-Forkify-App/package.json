@@ -1,17 +1,25 @@
 {
-  "name": "forkfiy",
+  "name": "forkify",
   "version": "1.0.0",
   "description": "Recipe application",
-  "main": "index.js",
+  "default": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "targets": {
+    "main": false
+  },
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
-  "author": "Kamil Dymek",
+  "author": "Jonas Schedtmann",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.12.0",
-    "parcel": "^2.12.0",
-    "sass": "^1.26.10"
+    "@parcel/transformer-sass": "^2.2.1",
+    "parcel": "^2.2.1"
+  },
+  "dependencies": {
+    "core-js": "^3.37.1",
+    "fracty": "^1.0.9",
+    "regenerator-runtime": "^0.14.1"
   }
 }
